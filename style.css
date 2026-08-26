@@ -56,12 +56,12 @@ CSS
   color:var(--ink-soft);
   font-weight:500;
   text-align:center;
-  white-space: nowrap;
+  line-height:1.2;
 }
 .lab-top{top:-18px;left:50%;transform:translateX(-50%);}
 .lab-bottom{bottom:-18px;left:50%;transform:translateX(-50%);}
 
-/* Ajustement des étiquettes latérales pour éviter le débordement écran */
+
 .lab-left{
   left: 0;
   top: 50%;
@@ -69,35 +69,13 @@ CSS
   text-align: left;
 }
 .lab-right{
-  right: 0;
+  right:-15px;
   top: 50%;
   transform: translateY(-50%);
   text-align: right;
 }
-Ce qui a été corrigé
-max-width: 220px : la boussole est légèrement plus compacte sur tous les écrans.
 
 left: 0 / right: 0 sur les étiquettes : les textes Centré sur soi et Ouvert sur l'autre restent désormais entièrement contenus à l'intérieur du conteneur sans pousser les marges extérieures.
-
-tu peux me donner en fichier css complet à télécharcher
-
-Voici ton fichier style.css complet mis à jour.
-
-Icône CSS
-style
- CSS 
-Ouvert
-Résumé des ajustements effectués :
-Dimension boussole ajustée : La taille maximale de la boussole a été réduite (max-width: 210px sur mobile et 230px sur grand écran) pour éviter qu'elle ne prenne trop de place.
-
-Repositionnement des libellés : Les étiquettes « Centré sur soi » et « Ouvert sur l'autre » (.lab-left et .lab-right) ne s'étendent plus en dehors du conteneur parent, ce qui empêche tout débordement latéral de l'écran.
-
-Sécurité contre le scroll horizontal : Ajout de la propriété overflow-x: hidden sur le conteneur principal .stage pour garantir un affichage parfaitement calé sur mobile.
-
-
-
-
-Gemini est une IA et peut se tromper, y compris sur des personnes. Votre confidentialité et GeminiS'ouvre dans une nouvelle fenêtre
 
 /* CSS mis à jour - DM Coaching */
 :root{
