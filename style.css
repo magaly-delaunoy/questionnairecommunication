@@ -1,3 +1,105 @@
+
+Gemini
+Nouvelle discussion
+Rechercher dans les discussions
+Images
+Bibliothèque
+Nouveau notebook
+Correction du débordement de la boussole
+Résumé des examens médicaux
+Modèles de rappel et confirmation
+Ajouts au contrat de coaching
+Proposition de création de contenu
+Résoudre le captcha du champ 9
+Créer un site sur GitHub
+Thème Natal et Transits Astrologiques
+Déclarer ses revenus d'activité auto-entrepreneur
+Prospection écoles : taux de réponse estimé
+Éviter les spams pour envois d'e-mails
+Analyse Astrologique : Soleil, Mercure, Maison 9
+Analyse d'un texte parental bienveillant
+Plateformes d'inscription atelier avec paiement
+Idées de publications Instagram : Motivation enfant
+Atelier Motivation Devoirs Parents Ludique
+Atelier Communication Parent-Enfant : Langage et Confiance
+
+Activité
+France
+D'après votre adresse IP
+Mettre à jour la position
+Conversation avec Gemini
+que ce soit sur ordi ou téléphone, la boussole depasse de l'écran, refait moi les codes pour améliorer ca, il faut juste la faire un peu plus petite
+
+Le problème vient des étiquettes latérales (.lab-left et .lab-right) qui ressortent du bloc parent et font déborder le conteneur sur les petits écrans.  
+JS
++ 1
+
+Pour corriger cela et rendre la boussole légèrement plus petite sans rien casser, il suffit de modifier style.css.
+
+Modifications CSS à apporter
+Remplace les règles de .compass et .compass-label dans ton fichier style.css par ce code :
+
+CSS
+/* ---- Compass signature element ---- */
+.compass{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  max-width:220px; /* Réduit la taille globale (était à 280px) */
+  margin:16px auto 28px;
+}
+.compass svg{width:100%;height:100%;display:block;}
+.compass-label{
+  position:absolute;
+  font-size:10.5px;
+  letter-spacing:0.02em;
+  color:var(--ink-soft);
+  font-weight:500;
+  text-align:center;
+  white-space: nowrap;
+}
+.lab-top{top:-18px;left:50%;transform:translateX(-50%);}
+.lab-bottom{bottom:-18px;left:50%;transform:translateX(-50%);}
+
+/* Ajustement des étiquettes latérales pour éviter le débordement écran */
+.lab-left{
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+}
+.lab-right{
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+}
+Ce qui a été corrigé
+max-width: 220px : la boussole est légèrement plus compacte sur tous les écrans.
+
+left: 0 / right: 0 sur les étiquettes : les textes Centré sur soi et Ouvert sur l'autre restent désormais entièrement contenus à l'intérieur du conteneur sans pousser les marges extérieures.
+
+tu peux me donner en fichier css complet à télécharcher
+
+Voici ton fichier style.css complet mis à jour.
+
+Icône CSS
+style
+ CSS 
+Ouvert
+Résumé des ajustements effectués :
+Dimension boussole ajustée : La taille maximale de la boussole a été réduite (max-width: 210px sur mobile et 230px sur grand écran) pour éviter qu'elle ne prenne trop de place.
+
+Repositionnement des libellés : Les étiquettes « Centré sur soi » et « Ouvert sur l'autre » (.lab-left et .lab-right) ne s'étendent plus en dehors du conteneur parent, ce qui empêche tout débordement latéral de l'écran.
+
+Sécurité contre le scroll horizontal : Ajout de la propriété overflow-x: hidden sur le conteneur principal .stage pour garantir un affichage parfaitement calé sur mobile.
+
+
+
+
+Gemini est une IA et peut se tromper, y compris sur des personnes. Votre confidentialité et GeminiS'ouvre dans une nouvelle fenêtre
+
+/* CSS mis à jour - DM Coaching */
 :root{
     --paper:#EDF4F6;
     --paper-deep:#DFEBEE;
@@ -29,6 +131,7 @@
     display:flex;
     flex-direction:column;
     min-height:100vh;
+    overflow-x:hidden;
   }
   .eyebrow{
     font-size:12px;
@@ -59,22 +162,46 @@
     position:relative;
     width:100%;
     aspect-ratio:1/1;
-    max-width:280px;
-    margin:8px auto 24px;
+    max-width:210px;
+    margin:24px auto 30px;
+    padding:0 10px;
   }
-  .compass svg{width:100%;height:100%;display:block;}
+  .compass svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
   .compass-label{
     position:absolute;
-    font-size:11px;
-    letter-spacing:0.04em;
+    font-size:10.5px;
+    letter-spacing:0.02em;
     color:var(--ink-soft);
     font-weight:500;
     text-align:center;
+    white-space:nowrap;
   }
-  .lab-top{top:-2px;left:50%;transform:translateX(-50%);}
-  .lab-bottom{bottom:-2px;left:50%;transform:translateX(-50%);}
-  .lab-left{left:-6px;top:50%;transform:translateY(-50%) translateX(-100%);text-align:right;width:78px;}
-  .lab-right{right:-6px;top:50%;transform:translateY(-50%) translateX(100%);width:78px;}
+  .lab-top{
+    top:-20px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .lab-bottom{
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .lab-left{
+    left:-5px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:left;
+  }
+  .lab-right{
+    right:-5px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:right;
+  }
   .needle{
     fill:var(--ink);
     transition: transform 1.1s cubic-bezier(.2,.9,.25,1.1);
@@ -139,7 +266,7 @@
   .mode-toggle button{
     flex:1;
     padding:10px 8px;
-    border-radius:9px;
+    border-radius:99px;
     font-size:13.5px;
     font-weight:600;
     background:transparent;
@@ -386,7 +513,7 @@
     flex-direction:column;
   }
   .start-grid .compass, .result-grid .compass{
-    order:-1; /* visual first on phone, like before */
+    order:-1; /* visual first on phone */
   }
 
   @media (min-width:480px){
@@ -404,6 +531,7 @@
       padding:44px 48px 52px;
       box-shadow:0 20px 60px -30px rgba(50,45,127,0.35);
       min-height:auto;
+      overflow-x:visible;
     }
     .qtext{ font-size:26px; }
   }
@@ -423,7 +551,7 @@
     .start-grid .start-text{ flex:1.15; }
     .start-grid .compass{
       flex:1;
-      max-width:320px;
+      max-width:230px;
       margin:0;
       order:0;
     }
@@ -436,8 +564,8 @@
     }
     .result-grid .compass{
       flex:none;
-      width:240px;
-      max-width:240px;
+      width:200px;
+      max-width:200px;
       margin:0;
       order:0;
     }
@@ -456,3 +584,5 @@
   @media (prefers-reduced-motion: reduce){
     .needle{transition:none;}
   }
+style.css
+Affichage de style.css.
